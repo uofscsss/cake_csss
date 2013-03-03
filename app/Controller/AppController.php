@@ -32,4 +32,28 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    
+    var $pages = array(
+        'Current Execs',
+        'Career Fair',
+        'Tumbler'=>'http://uofscsss.tumblr.com',
+        'Twitter'=>'http://twitter.com/uofscsss'
+    );
+
+    function getNav(){
+        $list = '<ul class="nav">';
+        foreach($this->pages as $page=>$url){
+            if(!is_string($page)){
+                $page = $url;
+                $url = str_replace(' ','-', $url);
+            }
+            $list .= "<li><a href='$url'>$page</a></li>";
+        }
+        $list .= '</ul>';
+        return $list;
+    }
+
+    function beforeFilter(){
+        $this->set('nav', $this->getNav());
+    }
 }
