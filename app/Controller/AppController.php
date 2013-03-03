@@ -45,7 +45,7 @@ class AppController extends Controller {
         foreach($this->pages as $page=>$url){
             if(!is_string($page)){
                 $page = $url;
-                $url = str_replace(' ','-', $url);
+                $url = str_replace(' ','', $url);
             }
             $list .= "<li><a href='$url'>$page</a></li>";
         }
