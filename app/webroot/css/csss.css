@@ -1,0 +1,43 @@
+body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+}
+
+img.logo {
+	display: block;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.exec {
+    margin-bottom: 75px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.hero-unit {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.sponsor-type {
+    padding : 10px;
+    margin-top: 40px;
+}
+.Platinum {
+    background-color: #E5E4E2;
+}
+.Gold {
+    background-color: #D4AF37;
+}
+.Silver {
+    background-color: #C0C0C0;
+}
+.Bronze {
+    background-color: #CD7F32;
+}
+.General {
+    background-color: #000;
+    color: #FFF;
+}
+div.csss_brand {
+    float:left;
+}
