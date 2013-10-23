@@ -1,12 +1,23 @@
 <?php
+/***
+ * Career Fair Controller
+ * 
+ * Data manipulation for the Career Fair page
+ */
 class CareerFairController extends AppController {
+    //The URL to the google doc spreadsheet so that our execs can easily edit this and it changes on the webpage.
     private $googleCareerFairSpreadsheetURL = 'https://docs.google.com/spreadsheet/pub?key=0AjQsTIS0nLpBdFpyallGS2loREVfMTlyM0NHMERoNHc&single=true&gid=1&output=csv';
 
+    //This function is called when accessing: http://csss.usask.ca/Career-Fair/
     function index(){
         
+        //Get the google file data
         $event = file($this->googleCareerFairSpreadsheetURL);
 
+        //It's represented in CSV to extract
         $tableHeader = str_getcsv(array_shift($event));
+        
+        //Here you will define the different sponsor types in the order you wish it to display on the page.
         $sponsorType = array(
             'Platinum'  => array(),
             'Gold'      => array(),
@@ -20,7 +31,7 @@ class CareerFairController extends AppController {
             $company = $e[2];
             $package = $e[4];
             $desc    = $e[5];
-            if(!empty($e[4]) && array_key_exists($e[4], $sponsorType)){
+            if(!empty($e[4]) && array_key_exists($e[4], $sponsorType)){ 
                 $sponsorType[$package][] = array(
                     $company,
                     $desc
