@@ -7,15 +7,20 @@
 class CareerFairController extends AppController {
     //The URL to the google doc spreadsheet so that our execs can easily edit this and it changes on the webpage.
     private $googleCareerFairSpreadsheetURL = 'https://docs.google.com/spreadsheet/pub?key=0AjQsTIS0nLpBdFpyallGS2loREVfMTlyM0NHMERoNHc&single=true&gid=1&output=csv';
+    private $foodSponsorSpreadsheetURL = 'https://docs.google.com/spreadsheet/pub?key=0AjQsTIS0nLpBdFpyallGS2loREVfMTlyM0NHMERoNHc&single=true&gid=1&output=csv';
 
     //This function is called when accessing: http://csss.usask.ca/Career-Fair/
     function index(){
         
         //Get the google file data
         $event = file($this->googleCareerFairSpreadsheetURL);
+        
+        $sponsor = file($this->foodSponsorSpreadsheetURL);
 
         //It's represented in CSV to extract
         $tableHeader = str_getcsv(array_shift($event));
+        
+        $foodSponsorData = str_getcsv(array_shift($sponsor));
         
         //Here you will define the different sponsor types in the order you wish it to display on the page.
         $sponsorType = array(
@@ -56,6 +61,8 @@ class CareerFairController extends AppController {
         $this->set('tableHeader', $tableHeader);
         $this->set('event', $event);
         $this->set('descriptions', $descriptions);
+        $this->set('foodSponsorText', $foodSponsorData[0]);
+        $this->set('foodSponsorHTML', $foodSponsorData[1]);
         
     }
 
