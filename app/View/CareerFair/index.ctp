@@ -28,8 +28,8 @@
 
 ?>
         </table>
-        <h3>Pizza lunch provided by:</h3>
-        <img src='img/pizza-pirates.png'></img>
+        <h3><?php echo $foodSponsorText;</h3>
+        <?php echo $foodSponsorHTML;?>
         <?php echo $descriptions;?>
     </div>
 </div>
